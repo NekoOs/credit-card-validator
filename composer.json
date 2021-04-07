@@ -1,0 +1,24 @@
+{
+    "name": "nekoos/credit-card-validator",
+    "description": "Validates popular debit and credit cards numbers.",
+    "type": "library",
+    "require": {
+        "inacho/php-credit-card-validator": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Neder Alfonso Fandiño Andrade",
+            "email": "neder.fandino@outlook.com"
+        },
+        {
+            "name": "Hair David Barragan Barragan",
+            "email": "hdavidbarragan@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "NekoOs\\Validator\\": "src"
+        }
+    }
+}
