@@ -4,7 +4,7 @@ namespace NekoOs\Validator\Support\Facades;
 
 class CreditCard
 {
-    public function isValid($number, $type): bool
+    public static function isValid($number, $type): bool
     {
         return (bool)\Inacho\CreditCard::validCreditCard($number, $type)['valid'];
     }
