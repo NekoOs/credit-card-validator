@@ -3,6 +3,7 @@
     "description": "Validates popular debit and credit cards numbers.",
     "type": "library",
     "require": {
+        "php": ">=5.6",
         "inacho/php-credit-card-validator": "^1.0"
     },
     "license": "MIT",
