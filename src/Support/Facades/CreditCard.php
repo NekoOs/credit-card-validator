@@ -2,43 +2,30 @@
 
 namespace NekoOs\Validator\Support\Facades;
 
+use Inacho\CreditCard as Checker;
+
 class CreditCard
 {
-    /**
-     * Valida un numero de tarjeta de credito
-     * @param string $number numero de la tarjeta
-     * @param string $type franquicia de la tarjeta
-     *
-     * @return array: (valid, number, type).
-     * */
     public static function isValidNumber($number, $type = null)
     {
-        $separators = ['-', '.', ' ',','];
+        $separators = ['-', '.', ' ', ','];
         $number = str_replace($separators, '', trim((string)$number));
-        return \Inacho\CreditCard::validCreditCard($number);
+        return Checker::validCreditCard($number, $type);
     }
 
-    /**
-     * Valida una fecha de una tarjeta
-     * @param string $date fecha en formato yyyy-mm
-     *
-     * @return boolean
-     * */
     public static function isValidDate($date)
     {
         $date = explode('-', $date);
-        return (bool)\Inacho\CreditCard::validDate($date[0], $date[1]);
+        return (count($date) === 2) ? (bool)Checker::validDate($date[0], $date[1]) : false;
     }
 
-    /**
-     * Valida una fecha de una tarjeta
-     * @param int $cvc codigo de seguridad de la tarjeta
-     * @param string $type franquicia de la tarjeta
-     *
-     * @return boolean
-     * */
     public static function isValidCvc($cvc, $type)
     {
-        return (bool)\Inacho\CreditCard::validCvc($cvc, $type);
+        return (bool)Checker::validCvc($cvc, $type);
+    }
+
+    public static function isValidCvv($cvv, $type)
+    {
+        return static::isValidCvc($cvv, $type);
     }
 }
